@@ -9,6 +9,11 @@ services:
     image: snipe/snipe-it:v6.0.2
     volumes:
       - ./logs:/var/www/html/storage/logs
+      - type: volume
+        source: snipeit-data
+        target: /var/lib/snipeit
+        volume:
+          nocopy: true
     ports:
       - "8000:80"
     depends_on:
@@ -49,3 +54,4 @@ services:
 volumes:
   mariadb-data:
   redis-data:
+  snipeit-data:
